@@ -9,7 +9,7 @@ import "./PriceConverter.sol";
 error FundMe__NotOwner();
 
 /**@title A sample Funding Contract
- * @author Patrick Collins
+ * @author ybl
  * @notice This contract is for creating a sample funding contract
  * @dev This implements price feeds as our library
  */
@@ -19,6 +19,7 @@ contract FundMe {
 
     // State variables
     uint256 public constant MINIMUM_USD = 50 * 10**18;
+    uint public a;
     address private immutable i_owner;
     address[] private s_funders;
     mapping(address => uint256) private s_addressToAmountFunded;
@@ -49,7 +50,7 @@ contract FundMe {
     }
 
     /// @notice Funds our contract based on the ETH/USD price
-    function fund() public payable {
+    function fund(uint tmpa) public payable {
         require(
             msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD,
             "You need to spend more ETH!"
@@ -57,6 +58,7 @@ contract FundMe {
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         s_addressToAmountFunded[msg.sender] += msg.value;
         s_funders.push(msg.sender);
+        a=tmpa;
     }
 
     function withdraw() public onlyOwner {

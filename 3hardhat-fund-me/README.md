@@ -61,3 +61,15 @@ npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
 8.然后我们写 00-delpoy-mock 的脚本，用于部署我们的 mock 合约 9.最后 yarn hardhat deploy 来自动判断网络来部署,由于 hardhat-deploy 这个包 delpoy 的时候是按照文件名的顺序执行的，所以 mock 的文件最好编号 00 开始。
 
 10. yarn hardhat node 时，由于 hardhat-deploy 的存在，会自动帮我们把文件部署到新开的网络上去。
+
+11.这里有个问题，我做好verify的各项操作之后，出错Error in plugin @nomiclabs/hardhat-etherscan: The contract verification failed. Reason: Fail - Unable to verify 暂且没有解决
+
+12.breakpoint 打好之后，在VSCODE里面选座左边数下来第四个Run and debuger（ctrl shit D），点击之后选择，JavaScrit debug terminal，就会弹出一个新的terminal，在这里面运行程序遇到断点可以调试,然后你可以选择看左边，也可以选择在DEBUG CONSOLE里面输入你想看的变量
+
+13.获得gas，gasPrice，获得账户的余额，通过合约获得提供商provider，发送以太币，bigNumber的add mul的方法，希望处理revert等都可以在FundMe.test.js里面看到
+
+14.在solidity中使用console.log（），导入import "hardhat/console.sol"; 然后就可以用了https://hardhat.org/tutorial/debugging-with-hardhat-network
+
+15.使用新的账户来连接合约 contract.connect(signer)
+
+16.查看 evm opcode的gas 消耗 https://github.com/crytic/evm-opcodes

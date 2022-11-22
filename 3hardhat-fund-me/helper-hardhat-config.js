@@ -1,7 +1,7 @@
 const networkConfig = {
     5: {
         name: "goerli",
-        ethUsdPriceFeed: 0xd4a33860578de61dbabdc8bfdb98fd742fa7028e,
+        ethUsdPriceFeed: "0xd4a33860578de61dbabdc8bfdb98fd742fa7028e", //注意加引号
     },
     31337: {
         name: "localhost",
