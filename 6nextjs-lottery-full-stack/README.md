@@ -49,3 +49,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 10.2 然后你就可以通过一些列的className来修改，你只需要去tailwindCss上搜索你想要的效果 比如border ,记得下载tailwind的插件在vscode上面
 
 11. 部署你的代码到IPFS上面，IPFS不是所有节点都拷贝一份，是节点选择性的拷贝copy，当查找一个IPFS文件的时候，会互相去问IPFS节点直到找到该文件。如果此时有节点觉得你的文件很不错，他也会复制一份，所以这个IPFS只是偏向与去中心化，但是还是有中心化的感觉，比如只有你一个节点拥有
+12.IPFS companion是当你浏览器输入ipfs://xxx的时候自动启动到你的ipfs节点的本地网关localhost:8080来查询，如果你本身没有ipfs节点，那么输入https://ipfs.io/ipfs/xxx到公共的网关去
+查询，Pinta也作为一个公共的网关，也作为一个很大IPFS节点，允许你存储数据，查找的更快，本地自己的节点上传一个IPFS，别的节点不一定看得到，如果你的IPFS关掉别人也找不到。
+
+13.yarn build 生成静态文件，因为ipfs不能运行动态的有server内容的东西
+然后 yarn next export 导出一个out文件夹，这里面是纯静态的文件，我们可以用到IPFS里面。
+
+14.另外一种简单的办法就是使用fleek.co，来帮助我们部署到IPFS上，它会自动帮我们实现上述的步骤
+我们登录，通过github登录，选add new site，选择你的仓库，选择Hosting Service为IPFS，然后命令那里注意cd 6nextjs-lottery-full-stack &&yarn install && yarn  build && yarn next export

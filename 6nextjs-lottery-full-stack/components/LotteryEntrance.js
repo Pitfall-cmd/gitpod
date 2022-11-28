@@ -3,8 +3,6 @@ import { useWeb3Contract, useMoralis } from "react-moralis"
 import { abi, contractAddress } from "../constants/index" //这里是因为index.js文档里面的module.exports的缘故，具体我也没弄明白为什么前端可以用require
 import { ethers } from "ethers"
 import { useNotification } from "web3uikit"
-import { useContractEvent } from "wagmi"
-import 'tw-elements';
 
 //have a function to lottery
 //切换网络的时候会重新渲染的
@@ -57,19 +55,7 @@ export default function LotteryEntrance() {
         setNumberOfPlayers(numPlayersFromCall)
         setRecentWinner(recentWinnerFromCall)
     }
-    function listenForEvents() {
-        useContractEvent({
-            address: raffleAddress,
-            abi: abi,
-            eventName: "WinnerPicked",
-            listener(player) {
-                console.log("WinnerPicked!!")
-                console.log(player)
-                updateUI()
-            },
-        })
-    }
-    listenForEvents()
+
     useEffect(() => {
         if (isWeb3Enabled) {
             updateUI()
