@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, //不然会执行2次
+  reactStrictMode: true,
 }
 
-module.exports = nextConfig
+module.exports = { nextConfig, images: {loader: "custom"}}
