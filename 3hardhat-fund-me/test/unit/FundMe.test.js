@@ -37,14 +37,14 @@ const {developmentChains} =require("../../helper-hardhat-config")
                   // 希望报错用 waffle 来处理
                   //注意这里string 的内容要与你solidity中报错的内容是一致的
                   const tmpa = 12
-                  await expect(fundMe.fund(tmpa)).to.be.revertedWith(
+                  await expect(fundMe.fund()).to.be.revertedWith(
                       "You need to spend more ETH!"
                   )
               })
               it("Updates the amount funded data structure", async () => {
                   //发送以太币的方式就是需要加入,{value:xx}
                   const tmpa = 12
-                  await fundMe.fund(tmpa, { value: sendValue })
+                  await fundMe.fund({ value: sendValue })
                   //
                   const response = await fundMe.getAddressToAmountFunded(
                       deployer
@@ -53,14 +53,14 @@ const {developmentChains} =require("../../helper-hardhat-config")
               })
               it("Adds funder to array of funders", async () => {
                   const tmpa = 12
-                  await fundMe.fund(tmpa, { value: sendValue })
+                  await fundMe.fund( { value: sendValue })
                   const response = await fundMe.getFunder(0)
                   assert.equal(response, deployer)
               })
           })
           describe("withdraw", function () {
               beforeEach(async () => {
-                  await fundMe.fund(12, { value: sendValue })
+                  await fundMe.fund({ value: sendValue })
               })
               it("withdraws ETH from a single funder", async () => {
                   // Arrange 获得初始的钱余额
