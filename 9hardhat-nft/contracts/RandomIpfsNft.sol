@@ -31,7 +31,7 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
   string[] internal s_dogTokenUris;
   uint256 private immutable i_mintFee;
   // Events
-  event NftRequested(uint256 indexed requestId, address requester);
+  event NftRequested(uint256 indexed requestId, address indexed requester);
   event NftMinted(Breed breed, address minter);
 
   constructor(
@@ -112,8 +112,6 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
     }
     revert RandomIpfsNft__RangeOutOfBounds();
   }
-
-  function tokenURI(uint) public view override returns (string memory) {}
 
   function getChanceArray() public pure returns (uint[3] memory) {
     return [10, 30, MAX_CHANCE_VALUE];

@@ -15,7 +15,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
               deployer = (await getNamedAccounts()).deployer
               // accounts = await ethers.getSigners() // could also do with getNamedAccounts
               player = (await getNamedAccounts()).player
-              await deployments.fixture("all")
+              await deployments.fixture("all") //这里面会添加subscrition Id和add consumer
               raffle = await ethers.getContract("Raffle", deployer)
               vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock", deployer) // Returns a new connection to the VRFCoordinatorV2Mock contract
               raffleEntranceFee = await raffle.getEntranceFee()
