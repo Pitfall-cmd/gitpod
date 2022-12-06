@@ -1,4 +1,11 @@
 1. deposite collateral 质押抵押品 ETH/WETH ,由于所有交易都是token之间进行的在defi里面，所以有了Weth wrapped eth，来带代表eth的token goerli:https://goerli.etherscan.io/address/0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6 mainnet: https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+    1.1 hardhat上的 ethers.getContractAt 可以获得一个网络的上合约, const iWeth = await ethers.getContractAt(
+        "IWeth",
+        "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", //主网上的Weth的地址
+        deployer
+    )
+
+
 2. Borrow another asset ：DAI
 3. Repay the DAI
 
@@ -12,4 +19,3 @@
 6.3 复制LendingPool.sol，里面的内容需要引入别的sol，所以yarn add @aave/protocol-v2   https://www.npmjs.com/package/@aave/protocol-v2 ,然后修改为 
 import {ILendingPoolAddressesProvider} from '@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol';
 import {DataTypes} from '@aave/protocol-v2/contracts/protocol/libraries/types/DataTypes.sol';
-6.4
