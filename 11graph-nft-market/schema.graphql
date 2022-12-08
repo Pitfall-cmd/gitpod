@@ -1,0 +1,42 @@
+#相当于数据库的表，我们到时候查询这张表里面的内容，有哪些字段
+type ActiveItem @entity {
+  id: ID!
+  buyer: Bytes! #address
+  eller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt!
+  price: BigInt
+}
+
+type ItemBought
+  @entity(immutable: true) { #感叹号表示 必须拥有的
+  id:ID!
+  buyer: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ItemCanceled @entity(immutable: true) {
+  id: ID!
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ItemListed @entity(immutable: true) {
+  id: ID!
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
