@@ -45,4 +45,11 @@
     2.然后会生成一些列文件，由于我们已经verify在etherscan上面，所以graph帮我们生产了abi，否走要手动去添加到abis里面，具体的各个文件的意思与内容见视频 https://youtu.be/gyMwXuJrbJQ
     3.然后下载插件来写graphQL   ,什么是graphQL https://graphql.org/  也是一种查询的语句吧具体还不是很懂
     4.先写schema.graphql里面的内容，写entity，相当于我们要查询的表，里面已经有部分内容根据etherscan上面的内容创建。 这个文件就是告诉thegraph去监听这些events
-    5.然后写src下面的文件，这个文件就是告诉thegraph监听到events之后如何存储，如何做映射
+    5.然后修改有关graphql的内容之后 运行 graph  codegen 去生成generated里面的文件
+    6.然后写src下面的文件，这个文件就是告诉thegraph监听到events之后如何存储，如何做映射
+    7.你可以在subgraph.yaml里面看到event触发之后调用什么函数
+    8.在subgraph。yaml的 dataSources:下面的source下面加一个字段叫做：startBlock，表示开始索引index event的开始区块，否则就会从区块0头到尾去监听所有event，会很慢
+    9.然后就可一会thegraph里面的文档，继续按照步骤 graph auth --studio 50c9b80e4d41cb32ba9f874d458922a2 ；graph codegen && graph build  ；graph deploy --studio nft-marketplace
+    10.上面auth是认证，相当于是你把你的本地这个graph的代码推送到网站上面的认证，然后第二步时本地build好，第三步是部署到网站上来监听. 此时当你触发event的时候在他的dashborad上的playground可以查询一下
+    11.用graphql来来请求graph上的内容 需要 yarn add @apollo/client  ， yarn add graphql
+    
